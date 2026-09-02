@@ -117,6 +117,21 @@ class CommandLineTests(unittest.TestCase):
                 content,
             )
 
+    def test_apply_creeds_flag_overrides_declared_creeds(self) -> None:
+        self.write_configuration("ai-augmented")
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            exit_code = main(["apply", "--creed", "ai-free"])
+        self.assertEqual(exit_code, 0)
+        content = (self.root / AGENTS_FILENAME).read_text(encoding="utf-8")
+        self.assertIn(render_block("ai-free"), content)
+        self.assertNotIn(render_block("ai-augmented"), content)
+        for mirror_filename in MIRROR_FILENAMES:
+            self.assertEqual(
+                (self.root / mirror_filename).read_text(encoding="utf-8"),
+                content,
+            )
+
     def test_validate_passes_for_correct_setup(self) -> None:
         self.write_configuration()
         apply_creeds(self.root)
