@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creed"
+version = "0.1.0"
+description = "Deterministic AI-dependency creed management for repositories"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+creed = "creed.cli:main"
+
+[tool.setuptools]
+packages = ["creed"]

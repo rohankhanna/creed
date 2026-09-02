@@ -1,0 +1,9 @@
+{
+  "creed": "ai-augmented",
+  "ai_allowed_in_build": true,
+  "ai_allowed_in_runtime": false,
+  "crystallization_required": false,
+  "labeled_gaps_required": false,
+  "deterministic_fallback_required": false,
+  "ai_may_establish_truth": false
+}
